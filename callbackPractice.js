@@ -15,19 +15,34 @@ and what you should write is the favNum function that makes the code above work,
     cb(str);
    }
 
+   
    sayHi('Hi Katie', function(thingToSay){
       alert(thingToSay); //should alert ('Hi Katie')'
    });
     
+    var sayHi = function(st, cb) {
+      cb(str);
+    }
     
+    function(thingtosay){
+      alert(thingtosay);
+    }
 */
 
 
 
   //Code Here for first
+
   
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
-first(names, function(firstName){
+
+ var first = function(arr, cb) {     //takes in the anonymous function(cb) and the array of names as parameters. So when you call it, it needs these two. 
+   cb(arr[0]);                       //says put the array into the anonymous and get the first index of the array. -- The anonymous function gets made in the parameters when you call it.
+ }
+
+first(names, //puts into into function below
+
+function(firstName){                                           //this is the cb function in the "first" parameter its just unnamed
   console.log('The first name in names is ', firstName)
 });
 
@@ -39,6 +54,9 @@ first(names, function(firstName){
 
 
   //Code Here for last
+  
+var last = function(arr, cb)
+cb(arr[arr.length-1]);
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 last(names, function(lastName){
@@ -54,7 +72,9 @@ last(names, function(lastName){
 
 
 
-
+var multiply = function(num1, num2, cb) {
+  cb(num1 * num2); 
+}
 
   //Code Here for multiply
 
@@ -74,7 +94,13 @@ multiply(4, 3, function(answer){
 
   //Code Here for contains
 
+var contains = function(arr, str, cb) {
+  cb(arr.indexOf(str) !== -1);
+}
+
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
+
+
 contains(names, 'Colt', function(result){
   if(result === true){
     console.log('Colt is in the array');
@@ -89,15 +115,45 @@ contains(names, 'Colt', function(result){
 
 /* NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM ---- NEXT PROBLEM */
 
-
-
-
+var uniq = function(arr, cb) {
+      var uniqArray =[];
+  for (var i = 0; i < arr.length; i++) {
+     if (uniqArray.indexOf(arr[i]) === -1) {
+       uniqArray.push(arr[i]);
+     }   
+   }
+    cb(uniqArray);
+ }
+ 
+ 
+ 
     //Code Here for uniq
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
+
+
+
+var uniq = function(arr,cb){
+  var emptyObj = {};
+  var emptyArr = [];
+  
+  for (var i = 0; i < arr.length; i++) {
+    emptyObj[arr[i]] = arr[i];
+    console.log(emptyObj);
+  }
+  
+  for ( var key in emptyObj) {
+    emptyArr.push(key);
+  }
+  
+  cb(emptyArr);
+}
+  
+
+
 
 
 
